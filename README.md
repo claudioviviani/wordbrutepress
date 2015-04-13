@@ -22,12 +22,11 @@ Coded By :      Claudio Viviani
 </pre>
 #Usage:
 <pre>
-<br>
-standard login method:
+Standard login method:
 <br>
 python wordbrutepress.py -S -t http://target.com -u username -w wordlist [--timeout]
 
-xml-rpc login method:
+Xml-rpc login method:
 <br>
 python wordbrutepress.py -S -t http://target.com -u username -w wordlist [--timeout]
 </pre>
