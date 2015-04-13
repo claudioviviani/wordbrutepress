@@ -13,7 +13,15 @@ Coded By :      Claudio Viviani
                 https://plus.google.com/+HomelabIt1/
                 https://www.youtube.com/channel/UCqqmSdMqf_exicCe_DjlBww
 </pre>
+#Features:
+<pre>
+1) Multithreading
+2) xml-rpc brute force mode
+3) http and https protocols support
+4) Random User Agent
+</pre>
 #Usage:
+<pre>
 <br>
 standard login method:
 <br>
@@ -22,3 +30,14 @@ python wordbrutepress.py -S -t http://target.com -u username -w wordlist [--time
 xml-rpc login method:
 <br>
 python wordbrutepress.py -S -t http://target.com -u username -w wordlist [--timeout]
+</pre>
+#CHANGELOG
+<pre>
+ 2015-04-12 v2.0
+ 1) Add new feature: xml-rpc brute force mode
+ 2) Fix minor bugs
+
+ 2015-04-11 v1.1
+ 1) optparse (Deprecated since version 2.7) replaced by argparse
+ 2) Fix connection bugs
+</pre>
