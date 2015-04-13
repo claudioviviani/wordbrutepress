@@ -1,9 +1,9 @@
 #Wordbrutepress
 Wordpress Brute Force Multithreading with standard and xml-rpc login method written in python.
-
+	
 Coded By :      Claudio Viviani
-                http://www.homelab.it
-				        http://ffhd.homelab.it (Free Fuzzy Hashes Database)
+		http://www.homelab.it
+		http://ffhd.homelab.it (Free Fuzzy Hashes Database)
 				
                 info@homelab.it
                 homelabit@protonmail.ch
