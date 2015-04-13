@@ -1,4 +1,4 @@
-Wordpress Brute Force Multithreading with standard and xml-rpc login method written in python.
+#Wordpress Brute Force Multithreading with standard and xml-rpc login method written in python.
 
 Usage standard login method:
 
