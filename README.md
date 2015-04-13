@@ -24,11 +24,11 @@ Coded By :      Claudio Viviani
 <pre>
 Standard login method:
 
-python wordbrutepress.py -S -t http://target.com -u username -w wordlist [--timeout]
+python wordbrutepress.py -S -t http[s]://target.com[:port] -u username -w wordlist [--timeout in sec]
 
 Xml-rpc login method:
 
-python wordbrutepress.py -S -t http://target.com -u username -w wordlist [--timeout]
+python wordbrutepress.py -X -t http[s]://target.com[:port] -u username -w wordlist [--timeout in sec]
 </pre>
 #CHANGELOG
 <pre>
