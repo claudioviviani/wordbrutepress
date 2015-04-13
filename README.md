@@ -11,11 +11,14 @@ Coded By :      Claudio Viviani
                 https://www.facebook.com/homelabit
                 https://twitter.com/homelabit
                 https://plus.google.com/+HomelabIt1/
-		https://www.youtube.com/channel/UCqqmSdMqf_exicCe_DjlBww
+                https://www.youtube.com/channel/UCqqmSdMqf_exicCe_DjlBww
 </pre>
-#Usage: 
+#Usage:
+<br>
 standard login method:
+<br>
 python wordbrutepress.py -S -t http://target.com -u username -w wordlist [--timeout]
 
 xml-rpc login method:
+<br>
 python wordbrutepress.py -S -t http://target.com -u username -w wordlist [--timeout]
