@@ -3,7 +3,7 @@ Wordpress Brute Force Multithreading with standard and xml-rpc login method writ
 <pre>	
 Coded By :      Claudio Viviani
                 http://www.homelab.it
-                http://adf.ly/1F1MNw (Full HomelabIT Archive Exploit)
+                http://archive-exploit.homelab.it/1 (Full HomelabIT Archive Exploit)
                 http://ffhd.homelab.it (Free Fuzzy Hashes Database)
                 
                 info@homelab.it
