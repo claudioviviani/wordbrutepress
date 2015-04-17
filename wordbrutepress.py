@@ -70,7 +70,7 @@ banner = """
                    homelabit@protonmail.ch
 
         http://ffhd.homelab.it (Free Fuzzy Hashes Database)
-       http://adf.ly/1F1MNw  (Full HomelabIT Archive Exploit)
+               http://archive-exploit.homelab.it/1 
                https://www.facebook.com/homelabit
                  https://twitter.com/homelabit
                https://plus.google.com/+HomelabIt1/
