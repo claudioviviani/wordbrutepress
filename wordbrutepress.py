@@ -390,7 +390,7 @@ with open(wlfile) as wordlist:
 	    sys.stdout.write('\r')
 	    sys.stdout.write('[+] Password checked: '+str(count)+'/'+str(totalwordlist))
 	    sys.stdout.flush()
-	    sleep(0.210)
+	    sleep(0.280)
 
 for a in threads:
     a.join()
