@@ -3,7 +3,6 @@ Wordpress Brute Force Multithreading with standard and xml-rpc login method writ
 <pre>	
 Coded By :      Claudio Viviani
                 http://www.homelab.it
-                http://archive-exploit.homelab.it/1 (Full HomelabIT Archive Exploit)
                 http://ffhd.homelab.it (Free Fuzzy Hashes Database)
                 
                 info@homelab.it
@@ -20,6 +19,7 @@ Coded By :      Claudio Viviani
 2) xml-rpc brute force mode
 3) http and https protocols support
 4) Random User Agent
+5) Big wordlist support
 </pre>
 #Usage:
 <pre>
@@ -33,6 +33,10 @@ python wordbrutepress.py -X -t http[s]://target.com[:port] -u username -w wordli
 </pre>
 #CHANGELOG
 <pre>
+ 2015-11-20 v2.1
+ 1) Add new feature: Big wordlist support (thanks to guly @theguly)
+ 2) Fix faultcode check instead of "403" code for XML-RPC (thanks to guly @theguly)
+
  2015-04-12 v2.0
  1) Add new feature: xml-rpc brute force mode
  2) Fix minor bugs
