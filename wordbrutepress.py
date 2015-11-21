@@ -255,19 +255,19 @@ def connection(url,user,password,UA,timeout,brutemode):
            return checkCon
 
     except socket.timeout:
-         print('[X] Connection Timeout')
+         print('\n[X] Connection Timeout')
          os._exit(1)
     except socket.error:
-         print('[X] Connection Refused')
+         print('\n[X] Connection Refused')
          os._exit(1)
     except httplib.ResponseNotReady:
-        print('[X] Server Not Responding')
+        print('\n[X] Server Not Responding')
         os._exit(1)
     except httplib2.ServerNotFoundError:
-        print('[X] Server Not Found')
+        print('\n[X] Server Not Found')
         os._exit(1)
     except httplib2.HttpLib2Error:
-        print('[X] Connection Error!!')
+        print('\n[X] Connection Error!!')
         os._exit(1)
 
 
@@ -390,7 +390,7 @@ with open(wlfile) as wordlist:
 	    sys.stdout.write('\r')
 	    sys.stdout.write('[+] Password checked: '+str(count)+'/'+str(totalwordlist))
 	    sys.stdout.flush()
-	    sleep(0.280)
+	    sleep(0.210)
 
 for a in threads:
     a.join()
