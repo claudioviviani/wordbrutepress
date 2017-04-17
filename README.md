@@ -1,4 +1,4 @@
-#Wordbrutepress
+# Wordbrutepress
 Wordpress Brute Force Multithreading with standard and xml-rpc login method written in python.
 <pre>	
 Coded By :      Claudio Viviani
@@ -13,7 +13,7 @@ Coded By :      Claudio Viviani
                 https://plus.google.com/+HomelabIt1/
                 https://www.youtube.com/channel/UCqqmSdMqf_exicCe_DjlBww
 </pre>
-#Features:
+# Features:
 <pre>
 1) Multithreading
 2) xml-rpc brute force mode
@@ -21,7 +21,7 @@ Coded By :      Claudio Viviani
 4) Random User Agent
 5) Big wordlist support
 </pre>
-#Usage:
+# Usage:
 <pre>
 Standard login request:
 
@@ -31,7 +31,7 @@ Xml-rpc login request:
 
 python wordbrutepress.py -X -t http[s]://target.com[:port] -u username -w wordlist [--timeout in sec]
 </pre>
-#CHANGELOG
+# CHANGELOG
 <pre>
  2015-11-20 v2.1
  1) Add new feature: Big wordlist support (thanks to guly @theguly)
